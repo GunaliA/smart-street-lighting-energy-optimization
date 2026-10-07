@@ -1,0 +1,1896 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_INFINITY",
+      "label": "Infinity",
+      "description": "Select the existing Infinity datasource",
+      "type": "datasource",
+      "pluginId": "yesoreyeram-infinity-datasource",
+      "pluginName": "Infinity"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "13.2.3"
+    },
+    {
+      "type": "datasource",
+      "id": "yesoreyeram-infinity-datasource",
+      "name": "Infinity",
+      "version": "4.1.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "title": "Total Lights",
+      "type": "stat",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "total_lights",
+              "text": "total_lights",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/kpis?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "green"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 2,
+      "title": "Active Lights",
+      "type": "stat",
+      "gridPos": {
+        "x": 4,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "active_lights",
+              "text": "active_lights",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/kpis?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "green"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 3,
+      "title": "Faulty Lights",
+      "type": "stat",
+      "gridPos": {
+        "x": 8,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "faulty_lights",
+              "text": "faulty_lights",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/kpis?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "red"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 4,
+      "title": "Total Energy",
+      "type": "stat",
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "total_energy_kwh",
+              "text": "total_energy_kwh",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/kpis?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "kWh",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 5,
+      "title": "Average Power",
+      "type": "stat",
+      "gridPos": {
+        "x": 16,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "average_power_w",
+              "text": "average_power_w",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/kpis?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "W",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "orange"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 6,
+      "title": "Power & Hourly Energy Over Time",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 16,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "hour",
+              "text": "hour",
+              "type": "timestamp"
+            },
+            {
+              "selector": "total_energy_kwh",
+              "text": "total_energy_kwh",
+              "type": "number"
+            },
+            {
+              "selector": "average_power_w",
+              "text": "average_power_w",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/power_time?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": false,
+            "axisPlacement": "left"
+          },
+          "unit": "W"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_energy_kwh"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Hourly Energy"
+              },
+              {
+                "id": "unit",
+                "value": "kWh"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Energy (kWh)"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "yellow"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "average_power_w"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Average Power"
+              },
+              {
+                "id": "unit",
+                "value": "W"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Power (W)"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "showLegend": true,
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 7,
+      "title": "Optimization Summary",
+      "type": "text",
+      "gridPos": {
+        "x": 16,
+        "y": 4,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "# Energy Optimization\n\n**Current energy:** 3.6437 kWh  \n**Optimized energy:** 2.8787 kWh  \n**Savings:** 0.7649 kWh  \n**Savings rate:** 20.99%\n\nThe optimization model reduces lighting output according to traffic, motion, ambient light (LDR), and fault status.\n\n> **Software-only simulation** \u2022 **10,000 lights** \u2022 **100,000 observations**"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 8,
+      "title": "Energy by Zone (kWh)",
+      "type": "barchart",
+      "gridPos": {
+        "x": 0,
+        "y": 12,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "location",
+              "text": "location",
+              "type": "string"
+            },
+            {
+              "selector": "total_energy_kwh",
+              "text": "total_energy_kwh",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/location_energy?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "kWh",
+          "decimals": 3
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "location"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "Zone_01": {
+                        "text": "Zone_01",
+                        "color": "blue"
+                      },
+                      "Zone_02": {
+                        "text": "Zone_02",
+                        "color": "purple"
+                      },
+                      "Zone_03": {
+                        "text": "Zone_03",
+                        "color": "cyan"
+                      },
+                      "Zone_04": {
+                        "text": "Zone_04",
+                        "color": "green"
+                      },
+                      "Zone_05": {
+                        "text": "Zone_05",
+                        "color": "yellow"
+                      },
+                      "Zone_06": {
+                        "text": "Zone_06",
+                        "color": "orange"
+                      },
+                      "Zone_07": {
+                        "text": "Zone_07",
+                        "color": "red"
+                      },
+                      "Zone_08": {
+                        "text": "Zone_08",
+                        "color": "blue"
+                      },
+                      "Zone_09": {
+                        "text": "Zone_09",
+                        "color": "purple"
+                      },
+                      "Zone_10": {
+                        "text": "Zone_10",
+                        "color": "orange"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "xField": "location",
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "groupWidth": 0.72,
+        "barWidth": 0.85,
+        "barRadius": 0.15,
+        "fullHighlight": true,
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc",
+          "hideZeros": false
+        },
+        "colorByField": "location"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 9,
+      "title": "Average Power by Traffic (W)",
+      "type": "barchart",
+      "gridPos": {
+        "x": 12,
+        "y": 12,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "traffic_level",
+              "text": "traffic_level",
+              "type": "string"
+            },
+            {
+              "selector": "average_power_w",
+              "text": "average_power_w",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/traffic?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "watt",
+          "decimals": 1,
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "traffic_level"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "HIGH": {
+                        "text": "HIGH",
+                        "color": "red"
+                      },
+                      "MEDIUM": {
+                        "text": "MEDIUM",
+                        "color": "orange"
+                      },
+                      "LOW": {
+                        "text": "LOW",
+                        "color": "green"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "xField": "traffic_level",
+        "orientation": "vertical",
+        "showValue": "always",
+        "stacking": "none",
+        "groupWidth": 0.72,
+        "barWidth": 0.85,
+        "barRadius": 0.15,
+        "fullHighlight": true,
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc",
+          "hideZeros": false
+        },
+        "colorByField": "traffic_level"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 10,
+      "title": "Average Power by Motion (W)",
+      "type": "barchart",
+      "gridPos": {
+        "x": 0,
+        "y": 20,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "motion_status",
+              "text": "motion_status",
+              "type": "string"
+            },
+            {
+              "selector": "average_power_w",
+              "text": "average_power_w",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/motion?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "watt",
+          "decimals": 1,
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "motion_status"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "Motion Detected": {
+                        "text": "Motion Detected",
+                        "color": "blue"
+                      },
+                      "No Motion": {
+                        "text": "No Motion",
+                        "color": "green"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "xField": "motion_status",
+        "orientation": "vertical",
+        "showValue": "always",
+        "stacking": "none",
+        "groupWidth": 0.72,
+        "barWidth": 0.85,
+        "barRadius": 0.15,
+        "fullHighlight": true,
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc",
+          "hideZeros": false
+        },
+        "colorByField": "motion_status"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 11,
+      "title": "Traffic Distribution",
+      "type": "piechart",
+      "gridPos": {
+        "x": 8,
+        "y": 20,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "traffic_level",
+              "text": "traffic_level",
+              "type": "string"
+            },
+            {
+              "selector": "record_count",
+              "text": "record_count",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/traffic?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "HIGH"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MEDIUM"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "orange"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LOW"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "pieType": "donut",
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
+        "legend": {
+          "showLegend": true,
+          "displayMode": "list",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc"
+        },
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        }
+      },
+      "pluginVersion": "13.2.3",
+      "transformations": [
+        {
+          "id": "rowsToFields",
+          "options": {
+            "mappings": [
+              {
+                "fieldName": "traffic_level",
+                "handlerKey": "field.name"
+              },
+              {
+                "fieldName": "record_count",
+                "handlerKey": "field.value"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Fault Distribution",
+      "type": "piechart",
+      "gridPos": {
+        "x": 16,
+        "y": 20,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "fault_status",
+              "text": "fault_status",
+              "type": "string"
+            },
+            {
+              "selector": "record_count",
+              "text": "record_count",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/fault_status?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "NORMAL"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "HIGH_CURRENT"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "orange"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LIGHT_FAILURE"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LOW_VOLTAGE"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "purple"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "pieType": "donut",
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
+        "legend": {
+          "showLegend": true,
+          "displayMode": "list",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc"
+        },
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        }
+      },
+      "pluginVersion": "13.2.3",
+      "transformations": [
+        {
+          "id": "rowsToFields",
+          "options": {
+            "mappings": [
+              {
+                "fieldName": "fault_status",
+                "handlerKey": "field.name"
+              },
+              {
+                "fieldName": "record_count",
+                "handlerKey": "field.value"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Light Status",
+      "type": "piechart",
+      "gridPos": {
+        "x": 8,
+        "y": 28,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "light_status",
+              "text": "light_status",
+              "type": "string"
+            },
+            {
+              "selector": "record_count",
+              "text": "record_count",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/light_status?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ON"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "FAULT"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "pieType": "donut",
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
+        "legend": {
+          "showLegend": true,
+          "displayMode": "list",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc"
+        },
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        }
+      },
+      "pluginVersion": "13.2.3",
+      "transformations": [
+        {
+          "id": "rowsToFields",
+          "options": {
+            "mappings": [
+              {
+                "fieldName": "light_status",
+                "handlerKey": "field.name"
+              },
+              {
+                "fieldName": "record_count",
+                "handlerKey": "field.value"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Brightness Distribution (Observations)",
+      "type": "barchart",
+      "gridPos": {
+        "x": 0,
+        "y": 28,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "brightness_level",
+              "text": "brightness_level",
+              "type": "number"
+            },
+            {
+              "selector": "record_count",
+              "text": "record_count",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/brightness?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "decimals": 0,
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "brightness_level"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "0": {
+                        "text": "0",
+                        "color": "purple"
+                      },
+                      "40": {
+                        "text": "40",
+                        "color": "blue"
+                      },
+                      "50": {
+                        "text": "50",
+                        "color": "cyan"
+                      },
+                      "75": {
+                        "text": "75",
+                        "color": "green"
+                      },
+                      "85": {
+                        "text": "85",
+                        "color": "orange"
+                      },
+                      "100": {
+                        "text": "100",
+                        "color": "red"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "xField": "brightness_level",
+        "orientation": "vertical",
+        "showValue": "always",
+        "stacking": "none",
+        "groupWidth": 0.72,
+        "barWidth": 0.85,
+        "barRadius": 0.15,
+        "fullHighlight": true,
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc",
+          "hideZeros": false
+        },
+        "colorByField": "brightness_level"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 15,
+      "title": "Average Temperature by Range",
+      "type": "barchart",
+      "gridPos": {
+        "x": 16,
+        "y": 28,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "temperature_range",
+              "text": "temperature_range",
+              "type": "string"
+            },
+            {
+              "selector": "average_temperature",
+              "text": "average_temperature",
+              "type": "number"
+            }
+          ],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/temperature?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "celsius",
+          "decimals": 1
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "temperature_range"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "Below 25\u00b0C": {
+                        "text": "Below 25\u00b0C",
+                        "color": "blue"
+                      },
+                      "25\u00b0C - 29.9\u00b0C": {
+                        "text": "25\u00b0C - 29.9\u00b0C",
+                        "color": "cyan"
+                      },
+                      "30\u00b0C - 34.9\u00b0C": {
+                        "text": "30\u00b0C - 34.9\u00b0C",
+                        "color": "orange"
+                      },
+                      "35\u00b0C and above": {
+                        "text": "35\u00b0C and above",
+                        "color": "red"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "xField": "temperature_range",
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "groupWidth": 0.72,
+        "barWidth": 0.85,
+        "barRadius": 0.15,
+        "fullHighlight": true,
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "desc",
+          "hideZeros": false
+        },
+        "colorByField": "temperature_range"
+      },
+      "pluginVersion": "13.2.3"
+    },
+    {
+      "id": 16,
+      "title": "Recent Records",
+      "type": "table",
+      "gridPos": {
+        "x": 0,
+        "y": 36,
+        "w": 24,
+        "h": 10
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${DS_INFINITY}"
+      },
+      "targets": [
+        {
+          "columns": [],
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": false
+          },
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_INFINITY}"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "csv",
+          "url": "http://127.0.0.1:8000/api/recent?location=${location}&traffic=${traffic}&light_status=${light_status}&fault_status=${fault_status}",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "footer": {
+          "show": false
+        }
+      },
+      "pluginVersion": "13.2.3"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 41,
+  "style": "dark",
+  "tags": [
+    "smart-lighting",
+    "energy-optimization",
+    "grafana",
+    "big-data"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "location",
+        "label": "Location",
+        "type": "custom",
+        "query": "All,Zone_01,Zone_02,Zone_03,Zone_04,Zone_05,Zone_06,Zone_07,Zone_08,Zone_09,Zone_10",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "All"
+        },
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "All"
+          }
+        ],
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "refresh": 0
+      },
+      {
+        "name": "traffic",
+        "label": "Traffic",
+        "type": "custom",
+        "query": "All,HIGH,MEDIUM,LOW",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "All"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "refresh": 0
+      },
+      {
+        "name": "light_status",
+        "label": "Light Status",
+        "type": "custom",
+        "query": "All,ON,FAULT",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "All"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "refresh": 0
+      },
+      {
+        "name": "fault_status",
+        "label": "Fault Status",
+        "type": "custom",
+        "query": "All,NORMAL,HIGH_CURRENT,LIGHT_FAILURE,LOW_VOLTAGE",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "All"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "refresh": 0
+      }
+    ]
+  },
+  "time": {
+    "from": "2026-09-29T00:00:00Z",
+    "to": "2026-10-01T05:29:59Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Smart Street Lighting Energy Optimization \u2014 Final Dashboard",
+  "uid": "smart-street-lighting-final-v2",
+  "version": 5,
+  "description": "Monitoring, energy analysis, fault detection and lighting optimization for the software-simulated smart street lighting system."
+}
